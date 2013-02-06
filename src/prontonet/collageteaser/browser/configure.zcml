@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="prontonet.collage_teaser">
+
+    <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+    <include package="z3c.jbot" file="meta.zcml" />
+    <browser:jbot directory="overrides" layer="..interfaces.IProntonetCollageteaserLayer" />
+
+    <!-- Publish static files -->
+    <browser:resourceDirectory
+      name="prontonet.collage_teaser"
+      directory="static"
+      />
+
+    <browser:page
+        name="teaser"
+        for="Products.ATContentTypes.content.base.ATCTContent"
+        permission="zope.Public"
+        template="teaser.pt"
+        class=".teaser.TeaserView"
+        layer="Products.Collage.interfaces.ICollageBrowserLayer"
+       />
+</configure>
